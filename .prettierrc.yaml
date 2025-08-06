@@ -1,0 +1,9 @@
+printWidth: 100
+semi: true
+vueIndentScriptAndStyle: true
+singleQuote: true
+trailingComma: 'all'
+proseWrap: 'never'
+htmlWhitespaceSensitivity: 'ignore'
+tabWidth: 4
+endOfLine: 'auto'
