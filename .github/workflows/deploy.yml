@@ -1,9 +1,9 @@
 # .github/workflows/deploy.yml
-name: Deploy Vue to GitHub Pages
+name: Deploy My Home Pages
 
 on:
   push:
-    branches: ["main"]
+    branches: [ "main" ]
   workflow_dispatch:
 
 permissions:
