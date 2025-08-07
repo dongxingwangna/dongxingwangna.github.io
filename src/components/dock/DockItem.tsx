@@ -1,13 +1,8 @@
 import { defineComponent, ref } from 'vue';
 import ToolTip from '../toolTip/ToolTip.tsx';
+import type { AppCfg } from '../../system/type.ts';
 
-export interface DockItemProps {
-    icon: string;
-    label: string;
-    link: string;
-}
-
-const DockItem = defineComponent<DockItemProps>(
+const DockItem = defineComponent<Omit<AppCfg, 'main'>>(
     (props) => {
         const scale = ref(1);
 
@@ -23,21 +18,20 @@ const DockItem = defineComponent<DockItemProps>(
         }
 
         return () => (
-            <ToolTip title={props.label}>
-                <a
-                    href={props.link}
+            <ToolTip title={props.name}>
+                <span
                     class="flex flex-col items-center transition-transform duration-100 group"
                     onMousemove={onHover}
                     onMouseleave={resetScale}
                     style={{ transform: `scale( ${scale.value} )` }}
                 >
                     <img src={props.icon} alt="icon" class="w-10 h-10" />
-                </a>
+                </span>
             </ToolTip>
         );
     },
     {
-        props: ['icon', 'label', 'link'],
+        props: ['icon', 'name'],
     },
 );
 
