@@ -20,7 +20,7 @@ const DockItem = defineComponent<Omit<AppCfg, 'main'>>(
         return () => (
             <ToolTip title={props.name}>
                 <span
-                    class="flex flex-col items-center transition-transform duration-100 group"
+                    class="flex flex-col items-center transition-transform duration-100 group origin-bottom"
                     onMousemove={onHover}
                     onMouseleave={resetScale}
                     style={{ transform: `scale( ${scale.value} )` }}
