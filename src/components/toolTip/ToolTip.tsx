@@ -1,9 +1,6 @@
 import type { FunctionalComponent } from 'vue';
 
-const ToolTip: FunctionalComponent<{ title: string }> = (
-    props,
-    { slots }: { slots: { [key: string]: any } },
-) => {
+const ToolTip: FunctionalComponent<{ title: string }> = (props, { slots }) => {
     return (
         <div class="group relative">
             {slots.default?.()}
