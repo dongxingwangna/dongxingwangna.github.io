@@ -109,26 +109,63 @@ const Window = defineComponent({
                 <div class="bg-white/80 backdrop-blur-md border border-gray-200 rounded-2xl shadow-2xl overflow-hidden select-none h-full relative">
                     {/* 标题栏 */}
                     <div
-                        class="flex items-center gap-3 px-3 py-2 cursor-move bg-gradient-to-b from-white/60 to-white/30"
+                        class="flex items-center gap-3 px-3 py-2 bg-gradient-to-b from-white/60 to-white/30"
                         onPointerdown={(e) => startDrag(e)}
                     >
-                        {/* mac 红黄绿 按钮 */}
-                        <div class="flex gap-2">
+                        {/* mac 红黄绿按钮 */}
+                        <div class="flex gap-2 group">
+                            {/* 关闭按钮 */}
                             <span
-                                class="w-3.5 h-3.5 rounded-full shadow-inner bg-[#ff5f57] cursor-pointer"
+                                class=" relative w-3.5 h-3.5 rounded-full shadow-inner bg-[#ff5f57]"
                                 title="close"
                                 onClick={withModifiers(close, ['stop'])}
-                            />
+                            >
+                                <span class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-150">
+                                    <svg viewBox="0 0 8 8" class="w-[8px] h-[8px]">
+                                        <path
+                                            d="M1 1 L7 7 M7 1 L1 7"
+                                            stroke="black"
+                                            stroke-width="1.2"
+                                            stroke-linecap="round"
+                                        />
+                                    </svg>
+                                </span>
+                            </span>
+
+                            {/* 最小化按钮 */}
                             <span
-                                class="w-3.5 h-3.5 rounded-full shadow-inner bg-[#febc2e] cursor-pointer"
+                                class="relative w-3.5 h-3.5 rounded-full shadow-inner bg-[#febc2e]"
                                 title="minimize"
                                 onClick={withModifiers(minimize, ['stop'])}
-                            />
+                            >
+                                <span class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-150">
+                                    <svg viewBox="0 0 8 8" class="w-[8px] h-[8px]">
+                                        <path
+                                            d="M0 4 L8 4"
+                                            stroke="black"
+                                            stroke-width="1"
+                                            stroke-linecap="round"
+                                        />
+                                    </svg>
+                                </span>
+                            </span>
+
+                            {/* 最大化按钮 */}
                             <span
-                                class="w-3.5 h-3.5 rounded-full shadow-inner bg-[#28c840] cursor-pointer"
+                                class="relative w-3.5 h-3.5 rounded-full shadow-inner bg-[#28c840]"
                                 title="maximize"
                                 onClick={withModifiers(toggleMax, ['stop'])}
-                            />
+                            >
+                                <span class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-150">
+                                    <svg viewBox="0 0 1024 1024" class="w-[1024px] h-[1024px]">
+                                        <path
+                                            d="M672 704a32 32 0 0 0 32-32L704 493.248a32 32 0 0 0-54.656-22.59200001l-178.68800001 178.68800001A32 32 0 0 0 493.248 704L672 704z m-320-384a32 32 0 0 0-32 32l0 178.752a32 32 0 0 0 54.656 22.59200001L553.34400001 374.656A32 32 0 0 0 530.752 320L352 320z"
+                                            fill="#525366"
+                                            p-id="78790"
+                                        ></path>
+                                    </svg>
+                                </span>
+                            </span>
                         </div>
 
                         {/* 标题 */}
