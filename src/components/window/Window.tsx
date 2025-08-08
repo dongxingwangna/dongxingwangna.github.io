@@ -143,9 +143,7 @@ const Window = defineComponent({
                     </div>
 
                     {/* 内容区 */}
-                    <div
-                        class={[props.contentClass, 'bg-white p-4 h-full overflow-auto'].join(' ')}
-                    >
+                    <div class={[props.contentClass, 'bg-white h-full overflow-auto'].join(' ')}>
                         {slots.default?.()}
                     </div>
 
