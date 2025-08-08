@@ -7,8 +7,13 @@ import type { AppCfg } from '../../system/type.ts';
 const Dock = defineComponent(() => {
     const dockItems = ref<AppCfg[]>([]);
     const system = useSystem();
-    
+
     dockItems.value = system.getApps();
+
+    function runApp(item: AppCfg) {
+        console.log('wdx: Dock.tsx:14 ==> item-->', item);
+        system.runApp(item);
+    }
 
     return () => (
         <div class="fixed bottom-4 w-full flex justify-center pointer-events-none">
@@ -19,7 +24,12 @@ const Dock = defineComponent(() => {
                 }}
             >
                 {map(dockItems.value, (item) => (
-                    <DockItem key={item.name} icon={item.icon} name={item.name} />
+                    <DockItem
+                        key={item.name}
+                        icon={item.icon}
+                        name={item.name}
+                        onClick={() => runApp(item)}
+                    />
                 ))}
             </div>
         </div>

@@ -1,3 +1,5 @@
+import type { DefineSetupFnComponent, PublicProps } from 'vue';
+
 /**
  * app 配置信息
  */
@@ -17,5 +19,5 @@ export interface AppCfg {
     /**
      * 入口
      */
-    main: string;
+    main: DefineSetupFnComponent<Record<string, any>, {}, {}, Record<string, any> & {}, PublicProps>;
 }

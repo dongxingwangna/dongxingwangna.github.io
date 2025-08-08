@@ -1,8 +1,10 @@
 import type { AppCfg } from './type.ts';
 import { nanoid } from 'nanoid';
+import { ref } from 'vue';
 
 class System {
     apps: AppCfg[] = [];
+    runApps = ref<string[]>([]);
 
     registerApp(app: AppCfg) {
         if (!app.id) {
@@ -13,6 +15,14 @@ class System {
 
     getApps() {
         return this.apps;
+    }
+
+    runApp(app: AppCfg) {
+        this.runApps.value.push(app.name);
+    }
+
+    getRunApp() {
+        return this.runApps.value;
     }
 }
 

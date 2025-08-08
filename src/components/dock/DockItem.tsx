@@ -2,8 +2,12 @@ import { defineComponent, ref } from 'vue';
 import ToolTip from '../toolTip/ToolTip.tsx';
 import type { AppCfg } from '../../system/type.ts';
 
-const DockItem = defineComponent<Omit<AppCfg, 'main'>>(
-    (props) => {
+export type DockItemEmit = {
+    click: () => void;
+};
+
+const DockItem = defineComponent<Omit<AppCfg, 'main'>, DockItemEmit>(
+    (props, { emit }) => {
         const scale = ref(1);
 
         function onHover(e: MouseEvent) {
