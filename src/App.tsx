@@ -20,7 +20,9 @@ export function App() {
         <div class="bg-[url(/wallpaper/bg.png)] bg-no-repeat bg-cover h-full relative">
             <Dock />
             {map(runApp, (app) => (
-                <Window title={app.name} onClose={() => closeApp(app.runId)}>{h(appMap[app.name]['main'])}</Window>
+                <Window key={app.id} title={app.name} onClose={() => closeApp(app.runId)}>
+                    {h(appMap[app.name]['main'])}
+                </Window>
             ))}
         </div>
     );

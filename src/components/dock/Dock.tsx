@@ -25,7 +25,7 @@ const Dock = defineComponent(() => {
                 {map(dockItems.value, (item) => (
                     <DockItem
                         id={item.id}
-                        key={item.name}
+                        key={item.id}
                         icon={item.icon}
                         name={item.name}
                         onClick={() => runApp(item)}
