@@ -11,7 +11,6 @@ const Dock = defineComponent(() => {
     dockItems.value = system.getApps();
 
     function runApp(item: AppCfg) {
-        console.log('wdx: Dock.tsx:14 ==> item-->', item);
         system.runApp(item);
     }
 
@@ -25,6 +24,7 @@ const Dock = defineComponent(() => {
             >
                 {map(dockItems.value, (item) => (
                     <DockItem
+                        id={item.id}
                         key={item.name}
                         icon={item.icon}
                         name={item.name}

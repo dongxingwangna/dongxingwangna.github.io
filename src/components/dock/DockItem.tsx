@@ -7,7 +7,7 @@ export type DockItemEmit = {
 };
 
 const DockItem = defineComponent<Omit<AppCfg, 'main'>, DockItemEmit>(
-    (props, { emit }) => {
+    (props) => {
         const scale = ref(1);
 
         function onHover(e: MouseEvent) {

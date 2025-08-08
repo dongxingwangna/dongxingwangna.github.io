@@ -1,7 +1,7 @@
-import { defineComponent, onBeforeUnmount, onMounted, reactive, ref } from 'vue';
+import { defineComponent, onBeforeUnmount, onMounted, reactive, ref, withModifiers } from 'vue';
 
 const Window = defineComponent({
-    name: 'MacWindow',
+    name: 'Window',
     props: {
         title: { type: String, default: 'Untitled' },
         initialX: { type: Number, default: 100 },
@@ -115,28 +115,19 @@ const Window = defineComponent({
                         {/* mac 红黄绿 按钮 */}
                         <div class="flex gap-2">
                             <span
-                                class="w-3.5 h-3.5 rounded-full shadow-inner bg-[#ff5f57]"
+                                class="w-3.5 h-3.5 rounded-full shadow-inner bg-[#ff5f57] cursor-pointer"
                                 title="close"
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    close();
-                                }}
+                                onClick={withModifiers(close, ['stop'])}
                             />
                             <span
-                                class="w-3.5 h-3.5 rounded-full shadow-inner bg-[#febc2e]"
+                                class="w-3.5 h-3.5 rounded-full shadow-inner bg-[#febc2e] cursor-pointer"
                                 title="minimize"
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    minimize();
-                                }}
+                                onClick={withModifiers(minimize, ['stop'])}
                             />
                             <span
-                                class="w-3.5 h-3.5 rounded-full shadow-inner bg-[#28c840]"
+                                class="w-3.5 h-3.5 rounded-full shadow-inner bg-[#28c840] cursor-pointer"
                                 title="maximize"
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    toggleMax();
-                                }}
+                                onClick={withModifiers(toggleMax, ['stop'])}
                             />
                         </div>
 

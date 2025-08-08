@@ -7,7 +7,7 @@ export interface AppCfg {
     /**
      * app标识
      */
-    id?: string;
+    id: string;
     /**
      * 图标
      */
@@ -19,5 +19,11 @@ export interface AppCfg {
     /**
      * 入口
      */
-    main: DefineSetupFnComponent<Record<string, any>, {}, {}, Record<string, any> & {}, PublicProps>;
+    main: DefineSetupFnComponent<
+        Record<string, any>,
+        {},
+        {},
+        Record<string, any> & {},
+        PublicProps
+    >;
 }

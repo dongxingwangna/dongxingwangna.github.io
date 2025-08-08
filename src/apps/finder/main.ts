@@ -1,5 +1,8 @@
 import { useSystem } from '../../system/SysTem.ts';
+import Finder from './Finder.tsx';
 
 const system = useSystem();
 
-system.registerApp({ name: 'Finder', icon: '/icons/finder.png', main: 'finder' });
+const appId = system.registerAppId();
+
+system.registerApp({ id: appId, name: 'Finder', icon: '/icons/finder.png', main: Finder });

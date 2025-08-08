@@ -1,15 +1,17 @@
 import type { AppCfg } from './type.ts';
 import { nanoid } from 'nanoid';
 import { ref } from 'vue';
+import { filter } from 'lodash-es';
 
 class System {
     apps: AppCfg[] = [];
-    runApps = ref<string[]>([]);
+    runApps = ref<(Pick<AppCfg, 'id' | 'name'> & { runId: string })[]>([]);
+
+    registerAppId() {
+        return nanoid(16);
+    }
 
     registerApp(app: AppCfg) {
-        if (!app.id) {
-            app.id = nanoid(16);
-        }
         this.apps.push(app);
     }
 
@@ -18,7 +20,16 @@ class System {
     }
 
     runApp(app: AppCfg) {
-        this.runApps.value.push(app.name);
+        const runId = nanoid(16);
+        this.runApps.value.push({
+            name: app.name,
+            id: app.id,
+            runId: runId,
+        });
+    }
+
+    stopApp(runId: string) {
+        this.runApps.value = filter(this.runApps.value, (app) => app.runId !== runId);
     }
 
     getRunApp() {

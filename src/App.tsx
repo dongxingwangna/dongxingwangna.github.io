@@ -11,13 +11,16 @@ export function App() {
     const runApp = system.getRunApp();
     const apps = system.getApps();
     const appMap = keyBy(apps, 'name');
-    console.log('wdx: App.tsx:14 ==> runApp-->', runApp);
+
+    function closeApp(runId: string) {
+        system.stopApp(runId);
+    }
 
     return (
         <div class="bg-[url(/wallpaper/bg.png)] bg-no-repeat bg-cover h-full relative">
             <Dock />
-            {map(runApp, (appName) => (
-                <Window title={appName}>{h(appMap[appName]['main'])}</Window>
+            {map(runApp, (app) => (
+                <Window title={app.name} onClose={() => closeApp(app.runId)}>{h(appMap[app.name]['main'])}</Window>
             ))}
         </div>
     );
