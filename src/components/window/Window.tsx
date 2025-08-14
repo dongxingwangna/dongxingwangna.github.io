@@ -106,7 +106,7 @@ const Window = defineComponent({
                 }}
                 class="fixed"
             >
-                <div class="bg-white/80 backdrop-blur-md border border-gray-200 rounded-2xl shadow-2xl overflow-hidden select-none h-full relative">
+                <div class="bg-white/80 backdrop-blur-md border rounded-2xl shadow-2xl overflow-hidden select-none h-full flex flex-col">
                     {/* 标题栏 */}
                     <div
                         class="flex items-center gap-3 px-3 py-2 bg-gradient-to-b from-white/60 to-white/30"
@@ -180,7 +180,7 @@ const Window = defineComponent({
                     </div>
 
                     {/* 内容区 */}
-                    <div class={[props.contentClass, 'bg-white h-full overflow-auto'].join(' ')}>
+                    <div class={[props.contentClass, 'bg-white flex-auto overflow-auto']}>
                         {slots.default?.()}
                     </div>
 
